@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit BloggerProfile{% endblock %}
+
+{% block body %}
+    <h1>Edit BloggerProfile</h1>
+
+    {{ include('blogger_profile/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_blogger_profile_index') }}">back to list</a>
+
+    {{ include('blogger_profile/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New BloggerProfile{% endblock %}
+
+{% block body %}
+    <h1>Create new BloggerProfile</h1>
+
+    {{ include('blogger_profile/_form.html.twig') }}
+
+    <a href="{{ path('app_blogger_profile_index') }}">back to list</a>
+{% endblock %}
