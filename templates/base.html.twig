@@ -13,7 +13,9 @@
             {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
     </head>
-    <body>
+    <body class="bg-white">
+
+{#     Ajout de la navbar#}
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
                 <a class="navbar-brand fw-bold" href="{{ path('main_home') }}">Place to Blog</a>
@@ -28,6 +30,8 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#">Messages</a>
                         </li>
+
+{#                        Ces deux boutons doivent etre mis en avant#}
                         <li class="nav-item">
                             <a class="nav-link btn btn-outline-primary me-2" href="#">Connexion</a>
                         </li>
@@ -42,6 +46,8 @@
 
         </main>
         {% block body %}{% endblock %}
+
+{#Mise en place du pied de page#}
         <footer class="footer mt-auto py-5" style="background-color: #1a237e;">
             <div class="container">
                 <div class="row">
@@ -54,6 +60,8 @@
                     </div>
                     <!-- Colonne Liens Utiles -->
                     <div class="col-md-4 mb-3">
+
+{#                        Rediriger chaques boutons vers le bon endroit#}
                         <h5 class="text-white mb-3">Ressources</h5>
                         <ul class="list-unstyled">
                             <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">FAQ</a></li>
