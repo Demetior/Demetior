@@ -2,12 +2,14 @@
 
 namespace App\Entity;
 
-use App\Repository\BrandProfileRepository;
+use App\Repository\BrandRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: BrandProfileRepository::class)]
-class BrandProfile
+#[ORM\Entity(repositoryClass: BrandRepository::class)]
+class Brand
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -29,8 +31,23 @@ class BrandProfile
     #[ORM\Column(length: 300)]
     private ?string $website = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column(type: Types::JSON, nullable: true)]
     private ?array $previousCampaigns = null;
+
+    #[ORM\OneToOne(mappedBy: 'brand', cascade: ['persist', 'remove'])]
+    private ?User $user = null;
+
+    /**
+     * @var Collection<int, campaign>
+     */
+    #[ORM\OneToMany(targetEntity: campaign::class, mappedBy: 'brand')]
+    private Collection $campaign;
+
+    public function __construct()
+    {
+        $this->campaign = new ArrayCollection();
+    }
+
 
     public function getId(): ?int
     {
@@ -108,4 +125,52 @@ class BrandProfile
 
         return $this;
     }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(User $user): static
+    {
+        // set the owning side of the relation if necessary
+        if ($user->getBrand() !== $this) {
+            $user->setBrand($this);
+        }
+
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, campaign>
+     */
+    public function getCampaign(): Collection
+    {
+        return $this->campaign;
+    }
+
+    public function addCampaign(campaign $campaign): static
+    {
+        if (!$this->campaign->contains($campaign)) {
+            $this->campaign->add($campaign);
+            $campaign->setBrand($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCampaign(campaign $campaign): static
+    {
+        if ($this->campaign->removeElement($campaign)) {
+            // set the owning side to null (unless already changed)
+            if ($campaign->getBrand() === $this) {
+                $campaign->setBrand(null);
+            }
+        }
+
+        return $this;
+    }
+
 }

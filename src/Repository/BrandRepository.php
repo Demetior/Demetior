@@ -2,22 +2,22 @@
 
 namespace App\Repository;
 
-use App\Entity\BloggerProfile;
+use App\Entity\Brand;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<BloggerProfile>
+ * @extends ServiceEntityRepository<BrandProfile>
  */
-class BloggerProfileRepository extends ServiceEntityRepository
+class BrandRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, BloggerProfile::class);
+        parent::__construct($registry, BrandProfile::class);
     }
 
     //    /**
-    //     * @return BloggerProfile[] Returns an array of BloggerProfile objects
+    //     * @return BrandProfile[] Returns an array of BrandProfile objects
     //     */
     //    public function findByExampleField($value): array
     //    {
@@ -31,7 +31,7 @@ class BloggerProfileRepository extends ServiceEntityRepository
     //        ;
     //    }
 
-    //    public function findOneBySomeField($value): ?BloggerProfile
+    //    public function findOneBySomeField($value): ?BrandProfile
     //    {
     //        return $this->createQueryBuilder('b')
     //            ->andWhere('b.exampleField = :val')
