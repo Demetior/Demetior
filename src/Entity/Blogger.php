@@ -68,12 +68,12 @@ class Blogger
         return $this;
     }
 
-    public function getBirthdate(): ?\DateTimeImmutable
+    public function getBirthDate(): ?\DateTimeImmutable
     {
-        return $this->Birthdate;
+        return $this->birthDate;
     }
 
-    public function setBirthdate(\DateTimeImmutable $birthDate): static
+    public function setBirthDate(\DateTimeImmutable $birthDate): static
     {
         $this->birthDate = $birthDate;
 

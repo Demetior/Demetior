@@ -13,20 +13,35 @@
         </h1>
     </div>
 
-    <div class="container bg-white">
+    <div class="container bg-white" style="margin-top: 20px; margin-bottom: 60px;">
         <h2 class="text-center fs-4 mb-0 fw-normal">
             La première marketplace qui connecte les blogueurs 
     avec les marques pour des collaborations significatives. Monétisez votre influence et créez des partenariats authentiques.
         </h2>
     </div>
 
-    <div class="container d-flex justify-content-center gap-3 mt-4">
-        <a href="{{ path('/register/blogger') }}" class="nav-link btn btn-outline-primary me-2">
+    <div class="container d-flex justify-content-center gap-3 mt-4" style="margin-bottom: 60px;">
+        <a href="{{ path('blogger_registration') }}" class="nav-link btn btn-outline-primary me-2" href="#" style="background-color: white; border: 1px solid black; padding: 5px 10px;">
             <i class="bi bi-person-dash"></i> Rejoindre comme Blogueur
         </a>
 
-        <a href="{{ path('/register/brand') }}" class="nav-link btn btn-outline-primary me-2">
+        <a href="{{ path('brand_registration') }}" a class="nav-link btn" href="#" style="background-color: blue; border: 1px solid darkblue; color: white; padding: 5px 10px;">
             <i class="bi bi-person-dash"></i> Rejoindre comme Marque
+        </a>
+    </div>
+
+    <div class="container bg-white mt-5">
+        <h1 class="text-center display-4 mb-0 fw-bold">
+            Comment Ça marche 
+        </h1>
+        <h2 class="text-center fs-4 mb-0 fw-normal">
+            Commencer en quelques minutes et creez des partenariats reussis
+        </h2>
+    </div>
+
+    <div class="container d-flex justify-content-center gap-3 mt-4" style="margin-bottom: 60px;">
+        <a href="{{ path('brand_registration') }}" class="nav-link btn btn-outline-primary me-2" href="#" style="background-color: white; border: 1px solid black; padding: 5px 10px;">
+            <i class="bi bi-person-dash"></i> Commencer maintenant
         </a>
     </div>
 

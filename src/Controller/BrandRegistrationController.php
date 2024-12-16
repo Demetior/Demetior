@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Brand;
 use App\Entity\User;
-use App\Form\BrandRegistrationType; // Assurez-vous d'avoir ce formulaire
+use App\Form\BrandRegistrationType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,7 +20,7 @@ class BrandRegistrationController extends AbstractController
         $brand = new Brand();
 
         // Create the form
-        $form = $this->createForm(BrandRegistrationType::class, $user);
+        $form = $this->createForm(BrandRegistrationType::class,['user' => $user, 'brand' => $brand]);
 
         // Handle the request
         $form->handleRequest($request);
@@ -38,7 +38,7 @@ class BrandRegistrationController extends AbstractController
             return $this->redirectToRoute('success_page'); // Change to your success route
         }
 
-        return $this->render('registration/brand.html.twig', [
+        return $this->render('registration/register_brand.html.twig', [
             'form' => $form->createView(),
         ]);
     }

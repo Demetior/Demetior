@@ -17,6 +17,7 @@ class User
     #[ORM\Column]
     private ?int $id = null;
 
+    
     #[ORM\Column(length: 300)]
     #[Assert\Email]
     private ?string $email = null;
@@ -26,9 +27,6 @@ class User
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $inscriptionDate = null;
-
-    #[ORM\Column(type: Types::ARRAY)]
-    private array $role = [];
 
     #[ORM\Column]
     private array $roles = [];
@@ -44,7 +42,7 @@ class User
 
     #[ORM\OneToOne(inversedBy: 'user', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
-    private ?blogger $blogger = null;
+    private ?Blogger $blogger = null;
 
     #[ORM\OneToOne(inversedBy: 'user', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
@@ -94,18 +92,6 @@ class User
     public function setInscriptionDate(\DateTimeInterface $inscriptionDate): static
     {
         $this->inscriptionDate = $inscriptionDate;
-
-        return $this;
-    }
-
-    public function getRole(): array
-    {
-        return $this->role;
-    }
-
-    public function setRole(array $role): static
-    {
-        $this->role = $role;
 
         return $this;
     }
@@ -164,12 +150,12 @@ class User
         return $this;
     }
 
-    public function getBlogger(): ?blogger
+    public function getBlogger(): ?Blogger
     {
         return $this->blogger;
     }
 
-    public function setBlogger(blogger $blogger): static
+    public function setBlogger(Blogger $blogger): static
     {
         $this->blogger = $blogger;
 
