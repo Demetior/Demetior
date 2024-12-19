@@ -8,9 +8,11 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\EquatableInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-class User
+class User implements UserInterface, EquatableInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -28,7 +30,7 @@ class User
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $inscriptionDate = null;
 
-    #[ORM\Column]
+    #[ORM\Column(type: 'json')]
     private array $roles = [];
 
     #[ORM\Column]
@@ -98,12 +100,21 @@ class User
 
     public function getRoles(): array
     {
-        return $this->roles;
+        return array_unique($this->roles);
     }
 
     public function setRoles(array $roles): static
     {
         $this->roles = $roles;
+
+        return $this;
+    }
+
+    public function addRole(string $role): static
+    {
+        if (!in_array($role, $this->roles)) {
+            $this->roles[] = $role;
+        }
 
         return $this;
     }

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Choix d'inscription{% endblock %}
+
+{% block body %}
+  <div class="container mt-5">
+    <h2>Êtes-vous :</h2>
+    <div class="d-flex flex-column">
+      <a href="{{ path('brand_registration') }}" class="btn btn-primary mb-2">Une Marque</a>
+      <a href="{{ path('blogger_registration') }}" class="btn btn-primary">Un Blogueur</a>
+    </div>
+  </div>
+{% endblock %}

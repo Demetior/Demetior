@@ -34,6 +34,9 @@ class BloggerRegistrationController extends AbstractController
             $blog->setBlogName($request->request->get('blog_name'));
             $blog->setWebsite($request->request->get('website'));
 
+            // Assign the ROLE_BLOGGER to the user
+            $user->addRole('ROLE_BLOGGER');
+
             // Persist the entities
             $entityManager->persist($user);
             $entityManager->persist($blogger);

@@ -5,36 +5,45 @@
         <title>{% block title %}<strong>Place to Blog</strong>{% endblock %}</title>
 
         {% block stylesheets %}
+       
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-            <link href="{{ asset('navbar.css') }}" rel="stylesheet">
-            <link href={{asset("css/navbar.css")}} rel="navbar">
         {% endblock %}
 
         {% block javascripts %}
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
+        
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> 
+           
         {% endblock %}
     </head>
     <body class="bg-white">
 
 {#     Ajout de la navbar#}
 
- <!-- Navbar & Hero Start -->
-        <div class="container-xxl position-relative p-0" id="home">
-            <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
-                <a href="{{ path('main_home') }}" class="navbar-brand p-0" aria-label="Place to blog">
-                    <h1 class="m-0">Place to blog</h1>
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                    <span class="fa fa-bars"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav mx-auto py-0">
-                        <a href="#" class="nav-item nav-link active">Place de marché</a>
-                        <a href="#" class="nav-item nav-link">Messages</a>
-                    </div>
-                    <a href="" class="btn btn-primary-gradient rounded-pill py-2 px-4 ms-3 d-none d-lg-block">Connexion</a>
-                    <a href="" class="btn btn-primary-gradient rounded-pill py-2 px-4 ms-3 d-none d-lg-block">Commencer</a>
+ <!-- Navbar -->
+        <div id="home">
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+            <a class="navbar-brand" href="{{ path('main_home') }}">Place to blog</a>
+
+
+
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+       <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link disabled" aria-disabled="true" href="#" >Marketplace</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" aria-disabled="true" href="#">Messages</a>
+        </li>
+      </ul>
+    </div>
+                    <a href="" class="btn btn-sm btn-outline-secondary">Connexion</a>
+                    <a href="{{ path('choose_registration') }}" class="btn btn-sm btn-outline-secondary">Commencer</a>
                 </div>
             </nav>
         <main>

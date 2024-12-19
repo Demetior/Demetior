@@ -29,6 +29,9 @@ class BrandRegistrationController extends AbstractController
             $user->setBrand($brand);
             $brand->setUser($user);
 
+            // Assign the ROLE_BRAND to the user
+            $user->addRole('ROLE_BRAND');
+
             // Persist the entities
             $entityManager->persist($user);
             $entityManager->persist($brand);
